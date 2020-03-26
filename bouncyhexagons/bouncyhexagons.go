@@ -4,8 +4,9 @@ import (
 	"math"
 	"math/rand"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const (
@@ -29,7 +30,7 @@ func main() {
 
 	for i := 0; i < 6; i++ {
 		angle := -math.Pi * 2.0 * float64(i) / 6.0
-		hexagon = append(hexagon, Vector{math.Cos(angle), math.Sin(angle)}.Mult(radius - bevel))
+		hexagon = append(hexagon, Vector{math.Cos(angle), math.Sin(angle)}.Mult(radius-bevel))
 	}
 
 	for i := 0; i < 500; i++ {

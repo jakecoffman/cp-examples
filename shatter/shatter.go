@@ -2,11 +2,11 @@ package main
 
 import (
 	"math"
-
 	"math/rand"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const (

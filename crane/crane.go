@@ -3,8 +3,9 @@ package main
 import (
 	"math"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 var dollyBody *Body
@@ -60,7 +61,7 @@ func main() {
 
 	boxBody := space.AddBody(NewBody(30, MomentForBox(30, 50, 0)))
 	boxBody.SetPosition(Vector{200, -200})
-	shape = space.AddShape(NewBox(boxBody,50, 50, 0))
+	shape = space.AddShape(NewBox(boxBody, 50, 50, 0))
 	shape.SetFriction(0.7)
 	shape.SetCollisionType(COLLISION_CRATE)
 

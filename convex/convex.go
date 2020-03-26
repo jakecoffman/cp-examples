@@ -1,8 +1,9 @@
 package main
 
 import (
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const DENSITY = 1.0 / 10000.0
@@ -23,7 +24,7 @@ func main() {
 
 	width := 50.0
 	height := 70.0
-	mass := width*height*DENSITY
+	mass := width * height * DENSITY
 	moment := MomentForBox(mass, width, height)
 
 	body := space.AddBody(NewBody(mass, moment))

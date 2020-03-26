@@ -3,8 +3,9 @@ package main
 import (
 	"math"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const numBalls = 5

@@ -1,7 +1,10 @@
 package main
 
-import "github.com/jakecoffman/cp/examples"
-import . "github.com/jakecoffman/cp"
+import (
+	"cp-examples"
+
+	. "github.com/jakecoffman/cp"
+)
 
 func main() {
 	space := NewSpace()

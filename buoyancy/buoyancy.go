@@ -3,8 +3,9 @@ package main
 import (
 	"math"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const (
@@ -28,7 +29,7 @@ func waterPreSolve(arb *Arbiter, space *Space, ptr interface{}) bool {
 	// Clip the polygon against the water level
 	count := poly.Count()
 	var clippedCount int
-	clipped := make([]Vector, count + 1)
+	clipped := make([]Vector, count+1)
 
 	j := count - 1
 	for i := 0; i < count; i++ {

@@ -1,8 +1,9 @@
 package main
 
 import (
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const (
@@ -56,7 +57,7 @@ func main() {
 	shape.SetElasticity(0)
 	shape.SetFriction(0.9)
 
-	examples.Main(space,1.0/180.0, update, examples.DefaultDraw)
+	examples.Main(space, 1.0/180.0, update, examples.DefaultDraw)
 }
 
 func update(space *Space, dt float64) {

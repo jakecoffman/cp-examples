@@ -3,8 +3,9 @@ package main
 import (
 	"math/rand"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 const (
@@ -68,7 +69,7 @@ func update(space *Space, dt float64) {
 }
 
 func draw(space *Space) {
-	space.EachBody(func (body *Body) {
+	space.EachBody(func(body *Body) {
 		examples.DrawDot(3.0, body.Position(), FColor{200.0 / 255.0, 210.0 / 255.0, 230.0 / 255.0, 1.0})
 	})
 }

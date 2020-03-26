@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"math"
 
+	"cp-examples"
+
 	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
 )
 
 var queryStart Vector

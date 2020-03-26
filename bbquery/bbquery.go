@@ -1,10 +1,12 @@
 package main
 
 import (
-	. "github.com/jakecoffman/cp"
-	"github.com/jakecoffman/cp/examples"
-	"math/rand"
 	"fmt"
+	"math/rand"
+
+	"cp-examples"
+
+	. "github.com/jakecoffman/cp"
 )
 
 var (
