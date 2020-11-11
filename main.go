@@ -49,6 +49,9 @@ func Display(space *Space, tick float64, update UpdateFunc, draw DrawFunc) {
 
 	Update(space, tick, update)
 
+	ClearRenderer()
+	ClearTextRenderer()
+
 	draw(space)
 
 	// gives buffer to open-gl to draw
@@ -75,20 +78,13 @@ func Update(space *Space, tick float64, update UpdateFunc) {
 	}
 	lastTime = t
 	frames++
-	if t - lastFps >= 1 {
+	if t-lastFps >= 1 {
 		fps = frames
 		frames = 0
 		lastFps += 1
 	}
 
 	for accumulator += dt; accumulator > tick; accumulator -= tick {
-		// Tick
-
-		// Completely reset the renderer only at the beginning of a tick.
-		// That way it can always display at least the last ticks' debug drawing.
-		ClearRenderer()
-		ClearTextRenderer()
-
 		newPoint := mouseBody.Position().Lerp(Mouse, 0.25)
 		mouseBody.SetVelocityVector(newPoint.Sub(mouseBody.Position()).Mult(60.0))
 		mouseBody.SetPosition(newPoint)

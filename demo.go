@@ -95,7 +95,7 @@ func ColorForShape(shape *cp.Shape, data interface{}) cp.FColor {
 		return cp.FColor{R: intensity, A: 1}
 	}
 
-	var coef float32 = intensity / (max - min)
+	coef := intensity / (max - min)
 	return cp.FColor{
 		R: (r - min) * coef,
 		G: (g - min) * coef,
