@@ -31,7 +31,7 @@ func StickyPreSolve(arb *Arbiter, space *Space, data interface{}) bool {
 	for i := 0; i < contacts.Count; i++ {
 		// Sink the contact points into the surface of each shape.
 		contacts.Points[i].PointA = contacts.Points[i].PointA.Sub(contacts.Normal.Mult(STICK_SENSOR_THICKNESS))
-		contacts.Points[i].PointB = contacts.Points[i].PointB.Sub(contacts.Normal.Mult(STICK_SENSOR_THICKNESS))
+		contacts.Points[i].PointB = contacts.Points[i].PointB.Add(contacts.Normal.Mult(STICK_SENSOR_THICKNESS))
 		deepest = math.Min(deepest, contacts.Points[i].Distance)
 	}
 
