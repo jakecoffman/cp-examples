@@ -7,7 +7,7 @@ import (
 	. "github.com/jakecoffman/cp"
 	"image"
 	"image/png"
-	"log"
+	"math/rand"
 )
 
 func main() {
@@ -19,6 +19,7 @@ func main() {
 	var shape *Shape
 
 	walls := []Vector{
+		{-320, 240}, {320, 240},
 		{-320, -240}, {-320, 240},
 		{320, -240}, {320, 240},
 		{-320, -240}, {320, -240},
@@ -31,20 +32,21 @@ func main() {
 		shape.SetFilter(examples.NotGrabbableFilter)
 	}
 
-	//list, err := fruits.ReadDir("fruits")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//for _, item := range list {
-	data, err := fruits.ReadFile("fruits/apple.png")
+	list, err := fruits.ReadDir("fruits")
 	if err != nil {
 		panic(err)
 	}
-	img, err := png.Decode(bytes.NewBuffer(data))
-	if err != nil {
-		panic(err)
+	for _, item := range list {
+		data, err := fruits.ReadFile("fruits/" + item.Name())
+		if err != nil {
+			panic(err)
+		}
+		img, err := png.Decode(bytes.NewBuffer(data))
+		if err != nil {
+			panic(err)
+		}
+		addFruit(space, img)
 	}
-	addFruit(space, img)
 
 	examples.Main(space, 1.0/180.0, update, examples.DefaultDraw)
 }
@@ -69,13 +71,10 @@ func addFruit(space *Space, img image.Image) {
 		return float64(a) / 0xffff
 	}
 
-	lineSet := MarchHard(bb, 10_000, 10_000, 0.2, PolyLineCollectSegment, sampleFunc)
-	//MarchSoft(bb, 300, 300, 0.5, PolyLineCollectSegment, &lineSet, sampleFunc)
+	//lineSet := MarchHard(bb, 100, 100, 0.2, PolyLineCollectSegment, sampleFunc)
+	lineSet := MarchSoft(bb, 300, 300, 0.5, PolyLineCollectSegment, sampleFunc)
 
-	if len(lineSet.Lines) > 1 {
-		log.Panicln("Num lines:", len(lineSet.Lines))
-	}
-	line := lineSet.Lines[0].SimplifyCurves(0.2)
+	line := lineSet.Lines[0].SimplifyCurves(.1)
 	offset := Vector{float64(b.Max.X-b.Min.X) / 2., float64(b.Max.Y-b.Min.Y) / 2.}
 	// center the verts on origin
 	for i, l := range line.Verts {
@@ -83,8 +82,10 @@ func addFruit(space *Space, img image.Image) {
 	}
 
 	body := space.AddBody(NewBody(10, MomentForPoly(10, len(line.Verts), line.Verts, Vector{}, 1)))
+	body.SetPosition(Vector{float64(rand.Intn(640) - 320), float64(rand.Intn(480) - 240)})
 	fruit := space.AddShape(NewPolyShape(body, len(line.Verts), line.Verts, NewTransformIdentity(), 0))
 	fruit.SetElasticity(.5)
+	// or use the outline of the shape with lines if you don't want a polygon
 	for i := 0; i < len(line.Verts)-1; i++ {
 		a := line.Verts[i]
 		b := line.Verts[i+1]
