@@ -7,12 +7,14 @@ import (
 	. "github.com/jakecoffman/cp"
 	"image"
 	"image/png"
+	"log"
 )
 
 func main() {
 	space := NewSpace()
 	space.Iterations = 10
 	space.SetGravity(Vector{0, -100})
+	space.SetDamping(.9)
 
 	var shape *Shape
 
@@ -25,7 +27,7 @@ func main() {
 	for i := 0; i < len(walls)-1; i += 2 {
 		shape = space.AddShape(NewSegment(space.StaticBody, walls[i], walls[i+1], 0))
 		shape.SetElasticity(1)
-		shape.SetFriction(1)
+		shape.SetFriction(0)
 		shape.SetFilter(examples.NotGrabbableFilter)
 	}
 
@@ -42,10 +44,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if err = addFruit(space, img); err != nil {
-		//panic("For fruit " + item.Name() + ": " + err.Error())
-	}
-	//}
+	addFruit(space, img)
 
 	examples.Main(space, 1.0/180.0, update, examples.DefaultDraw)
 }
@@ -54,7 +53,7 @@ func update(space *Space, dt float64) {
 	space.Step(dt)
 }
 
-func addFruit(space *Space, img image.Image) error {
+func addFruit(space *Space, img image.Image) {
 	b := img.Bounds()
 	bb := BB{float64(b.Min.X), float64(b.Min.Y), float64(b.Max.X), float64(b.Max.Y)}
 
@@ -68,29 +67,29 @@ func addFruit(space *Space, img image.Image) error {
 		}
 		_, _, _, a := img.At(int(x), int(y)).RGBA()
 		return float64(a) / 0xffff
-		//if a == 0xffff {
-		//	return 1.0
-		//}
-		//return 0.0
 	}
 
-	lineSet := MarchHard(bb, 1_000, 1_000, 0.01, PolyLineCollectSegment, sampleFunc)
+	lineSet := MarchHard(bb, 10_000, 10_000, 0.2, PolyLineCollectSegment, sampleFunc)
 	//MarchSoft(bb, 300, 300, 0.5, PolyLineCollectSegment, &lineSet, sampleFunc)
 
-	//if len(lineSet.Lines) > 1 {
-	//	return fmt.Errorf("too many lines: %v", len(lineSet.Lines))
-	//}
-	for _, line := range lineSet.Lines {
-		newLine := line.SimplifyCurves(0.0)
-		body := space.AddBody(NewBody(1, MomentForPoly(1, len(newLine.Verts), newLine.Verts, Vector{}, 0)))
-		//space.AddShape(NewPolyShape(body, len(newLine.Verts), newLine.Verts, NewTransformIdentity(), 0))
-		for i := 0; i < len(newLine.Verts)-1; i++ {
-			a := newLine.Verts[i]
-			b := newLine.Verts[i+1]
-			AddSegment(space, body, a, b, 0)
-		}
+	if len(lineSet.Lines) > 1 {
+		log.Panicln("Num lines:", len(lineSet.Lines))
 	}
-	return nil
+	line := lineSet.Lines[0].SimplifyCurves(0.2)
+	offset := Vector{float64(b.Max.X-b.Min.X) / 2., float64(b.Max.Y-b.Min.Y) / 2.}
+	// center the verts on origin
+	for i, l := range line.Verts {
+		line.Verts[i] = l.Sub(offset)
+	}
+
+	body := space.AddBody(NewBody(10, MomentForPoly(10, len(line.Verts), line.Verts, Vector{}, 1)))
+	fruit := space.AddShape(NewPolyShape(body, len(line.Verts), line.Verts, NewTransformIdentity(), 0))
+	fruit.SetElasticity(.5)
+	for i := 0; i < len(line.Verts)-1; i++ {
+		a := line.Verts[i]
+		b := line.Verts[i+1]
+		AddSegment(space, body, a, b, 0)
+	}
 }
 
 //go:embed fruits
