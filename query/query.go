@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"cp-examples"
+	"github.com/jakecoffman/cp-examples"
 
 	. "github.com/jakecoffman/cp"
 )

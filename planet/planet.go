@@ -4,7 +4,7 @@ import (
 	"math"
 	"math/rand"
 
-	"cp-examples"
+	"github.com/jakecoffman/cp-examples"
 
 	. "github.com/jakecoffman/cp"
 )

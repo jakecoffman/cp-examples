@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"cp-examples"
+	"github.com/jakecoffman/cp-examples"
 
 	. "github.com/jakecoffman/cp"
 )

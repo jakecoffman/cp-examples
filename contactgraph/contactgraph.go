@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"cp-examples"
+	"github.com/jakecoffman/cp-examples"
 
 	. "github.com/jakecoffman/cp"
 )

@@ -2,9 +2,9 @@ package main
 
 import (
 	"bytes"
-	"cp-examples"
 	"embed"
 	. "github.com/jakecoffman/cp"
+	"github.com/jakecoffman/cp-examples"
 	"image"
 	"image/png"
 	"math/rand"

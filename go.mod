@@ -1,4 +1,4 @@
-module cp-examples
+module github.com/jakecoffman/cp-examples
 
 go 1.18
 
