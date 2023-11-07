@@ -9,4 +9,4 @@ require (
 	github.com/jakecoffman/cp v1.2.1
 )
 
-require golang.org/x/image v0.5.0 // indirect
+require golang.org/x/image v0.10.0 // indirect
