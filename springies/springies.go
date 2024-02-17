@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/jakecoffman/cp-examples"
 
-	. "github.com/jakecoffman/cp"
+	. "github.com/jakecoffman/cp/v2"
 )
 
 func main() {

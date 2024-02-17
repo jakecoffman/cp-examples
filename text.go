@@ -4,7 +4,7 @@ import (
 	"runtime"
 
 	"github.com/go-gl/gl/v2.1/gl"
-	. "github.com/jakecoffman/cp"
+	. "github.com/jakecoffman/cp/v2"
 )
 
 const (
