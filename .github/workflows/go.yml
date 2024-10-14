@@ -14,6 +14,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Install dependencies
+      run: sudo apt install libxcursor-dev libxinerama-dev libxrandr-dev libxi-dev libgl-dev libxxf86vm-dev
+    
     - uses: actions/checkout@v4
 
     - name: Set up Go
