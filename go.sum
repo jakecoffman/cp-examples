@@ -2,8 +2,8 @@ github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7 h1:SCYMcCJ89LjRGwEa0tRluN
 github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7/go.mod h1:482civXOzJJCPzJ4ZOX/pwvXBWSnzD4OKMdH4ClKGbk=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1 h1:QbL/5oDUmRBzO9/Z7Seo6zf912W/a6Sr4Eu0G/3Jho0=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
-github.com/go-gl/mathgl v0.0.0-20190713194549-592312d8590a h1:yoAEv7yeWqfL/l9A/J5QOndXIJCldv+uuQB1DSNQbS0=
-github.com/go-gl/mathgl v0.0.0-20190713194549-592312d8590a/go.mod h1:yhpkQzEiH9yPyxDUGzkmgScbaBVlhC06qodikEM0ZwQ=
+github.com/go-gl/mathgl v1.1.0 h1:0lzZ+rntPX3/oGrDzYGdowSLC2ky8Osirvf5uAwfIEA=
+github.com/go-gl/mathgl v1.1.0/go.mod h1:yhpkQzEiH9yPyxDUGzkmgScbaBVlhC06qodikEM0ZwQ=
 github.com/jakecoffman/cp/v2 v2.0.2 h1:HN+youpOhd8xgWYw5amqiJFLoreAIB/uI/EEzZohLjA=
 github.com/jakecoffman/cp/v2 v2.0.2/go.mod h1:Q0hFU7Kk6PMw4dwgFtvBC6O4KTm7ewiLuHrXtHMicyU=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
