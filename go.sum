@@ -4,8 +4,8 @@ github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1 h1:QbL/5oDUmRBzO9/Z7Seo
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
 github.com/go-gl/mathgl v1.1.0 h1:0lzZ+rntPX3/oGrDzYGdowSLC2ky8Osirvf5uAwfIEA=
 github.com/go-gl/mathgl v1.1.0/go.mod h1:yhpkQzEiH9yPyxDUGzkmgScbaBVlhC06qodikEM0ZwQ=
-github.com/jakecoffman/cp/v2 v2.0.2 h1:HN+youpOhd8xgWYw5amqiJFLoreAIB/uI/EEzZohLjA=
-github.com/jakecoffman/cp/v2 v2.0.2/go.mod h1:Q0hFU7Kk6PMw4dwgFtvBC6O4KTm7ewiLuHrXtHMicyU=
+github.com/jakecoffman/cp/v2 v2.1.0 h1:s0almZ7zDZs9JY35ciUgCoVKTMmdPkokF1dxHg226Wo=
+github.com/jakecoffman/cp/v2 v2.1.0/go.mod h1:Q0hFU7Kk6PMw4dwgFtvBC6O4KTm7ewiLuHrXtHMicyU=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20210921155107-089bfa567519/go.mod h1:GvvjBRRGRdwPK5ydBHafDWAxML/pGHZbMvKqRZ5+Abc=
