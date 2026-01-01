@@ -54,13 +54,15 @@ func DrawInit() {
 }
 
 func ColorForShape(shape *cp.Shape, data interface{}) cp.FColor {
-	if shape.Sensor() {
+	// accept invalid shape too
+	if shape == nil || shape.Sensor() {
 		return cp.FColor{R: 1, G: 1, B: 1, A: .1}
 	}
 
 	body := shape.Body()
 
-	if body.IsSleeping() {
+	// accept invalid body or its space too
+	if body == nil || shape.Space() == nil || body.IsSleeping() {
 		return cp.FColor{R: .2, G: .2, B: .2, A: 1}
 	}
 

@@ -26,6 +26,9 @@ var accumulator float64
 var lastTime, lastFps float64
 var frames, fps int
 
+// for demos that need to handle specific key events
+var HandleKeyFunc func(char rune)
+
 func init() {
 	runtime.LockOSThread()
 	rand.Seed(45073)
@@ -147,6 +150,10 @@ func Main(space *Space, tick float64, update UpdateFunc, draw DrawFunc) {
 	window.SetCharCallback(func(w *glfw.Window, char rune) {
 		if char == 'q' {
 			window.SetShouldClose(true)
+			return
+		}
+		if HandleKeyFunc != nil {
+			HandleKeyFunc(char)
 			return
 		}
 	})
